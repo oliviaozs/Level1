@@ -2,29 +2,36 @@ import ddf.minim.*;
 Minim minim;
 AudioSample sound;
 PImage backgroundImage;
+PImage gameOver;
+int imageWidth = 600;
+int imageHeight = 800;
+int paddleLength = 100;
+int paddleY = 720;
 int xPosition = 300;
-int xSpeed = 3;
-int yPosition = 400;
-int ySpeed = 3;
+int xSpeed = 6;
+int yPosition = 0;
+int ySpeed = 6;
+int lives = 3;
 
 void setup() {
   backgroundImage = loadImage("tenniscourt 2.jpg");
   minim = new Minim (this);
   sound = minim.loadSample("35679__jobro__laser2.wav", 128);
   size (600, 800);
+  println("Lives: " + lives);
 }
 
 void draw() {
-  image (backgroundImage, 0, 0, 600, 800);
-  fill (255, 255, 51);
-  stroke (255, 255, 51);
+  image (backgroundImage, 0, 0, imageWidth, imageHeight);
+  fill (153, 51, 255);
+  stroke (153, 51, 255);
   ellipse (xPosition, yPosition, 30, 30);
-  fill (0, 0, 255);
-  stroke (0, 0, 255);
-  rect (mouseX, 720, 100, 20);
+  fill (255, 153, 51);
+  stroke (255, 153, 51);
+  rect (mouseX, paddleY, paddleLength, 20);
   xPosition += xSpeed;
   yPosition += ySpeed;
-  if (xPosition >= 600 || xPosition <= 0) {
+  if (xPosition >= imageWidth || xPosition <= 0) {
     xSpeed = -xSpeed;
     sound.trigger();
   }
@@ -32,12 +39,23 @@ void draw() {
     ySpeed = -ySpeed;
     sound.trigger();
   }
-  if (intersects(xPosition, yPosition, mouseX, 720, 100)) {
+  if (intersects(xPosition, yPosition, mouseX, paddleY, paddleLength)) {
     ySpeed = -ySpeed;
   }
-  if (yPosition >= 800) {
+  if (yPosition >= imageHeight) {
     xSpeed = 0;
     ySpeed = 0;
+    lives --;
+    delay(1000);
+    println("Lives: " + lives);
+    if (lives == 0) {
+      println("GAME OVER");
+      exit();
+    }
+    xPosition = 300;
+    yPosition = 0;
+    xSpeed = 6;
+    ySpeed = 6;
   }
  
 }
