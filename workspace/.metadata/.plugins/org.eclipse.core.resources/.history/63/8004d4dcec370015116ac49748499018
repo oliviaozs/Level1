@@ -1,14 +1,10 @@
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
-public class Lottery extends JPanel implements Runnable, MouseListener {
-	
-	public void mousePressed(MouseEvent e) {
-		
+
+public class Lottery {
+	public static void main(String[] args) {
 		int rand1 = new Random().nextInt(53);
 		int rand2 = new Random().nextInt(53);
 		int rand3 = new Random().nextInt(53);
