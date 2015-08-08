@@ -1,0 +1,17 @@
+
+public class Timer {
+	String color;
+	String size;
+	
+	public Timer (String color, String size) {
+		this.color = color;
+		this.size = size;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "The timer is "+color+" and "+size;
+	}
+}
+

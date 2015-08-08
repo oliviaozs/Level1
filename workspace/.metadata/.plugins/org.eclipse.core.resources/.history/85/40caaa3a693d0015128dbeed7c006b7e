@@ -1,0 +1,21 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class ChuckleClicker {
+	
+	public static void main(String[] args) {
+		ChuckleClicker clicker = new ChuckleClicker();
+		clicker.makeButtons();
+	}
+
+	private void makeButtons() {
+		JFrame frame = new JFrame();
+		frame.show();
+		JPanel panel = new JPanel();
+		JButton button1 = new JButton();
+		JButton button2 = new JButton();
+		button1.setToolTipText("joke");
+		button2.setToolTipText("punchline");
+	}
+}

@@ -1,0 +1,10 @@
+
+public class Runner {
+public static void main(String[] args) {
+	Timer alien = new Timer("green", "small");
+	Timer pig = new Timer("pink", "large");
+	Timer cow = new Timer("white", "large");
+	Timer smileyFace = new Timer("yellow", "large");
+	System.out.println(alien.toString());
+}
+}

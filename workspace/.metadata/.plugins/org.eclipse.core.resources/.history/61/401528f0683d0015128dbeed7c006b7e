@@ -1,0 +1,15 @@
+import javax.swing.JFrame;
+
+public class ChuckleClicker {
+	
+	public static void main(String[] args) {
+		ChuckleClicker clicker = new ChuckleClicker();
+		clicker.makeButtons();
+	}
+
+	private void makeButtons() {
+		JFrame frame = new JFrame();
+		frame.show();
+		//JPannel pannel = new JPannel();
+	}
+}

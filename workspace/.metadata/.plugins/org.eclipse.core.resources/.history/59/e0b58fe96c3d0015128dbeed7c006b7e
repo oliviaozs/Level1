@@ -1,0 +1,11 @@
+
+public class FortuneCookie {
+public static void main(String[] args) {
+	FortuneCookie fortune = new FortuneCookie();
+	fortune.showButton();
+}
+
+private void showButton() {
+	System.out.println("hello");
+}
+}
