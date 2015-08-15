@@ -1,0 +1,32 @@
+public class Person {
+	String name;
+	String superpower;
+	boolean isFriend;
+	int age;
+
+	Person(String name, String superpower, boolean isFriend, int age) {
+		this.name = name;
+		this.superpower = superpower;
+		this.isFriend = isFriend;
+		this.age = age;
+	}
+
+	void setSuperpower(String superpower) {
+		this.superpower = superpower;
+	}
+
+	String getSuperpower() {
+		return superpower;
+	}
+
+	void printSuperpower() {
+		System.out.println(superpower);
+	}
+
+	public static void main(String[] args) {
+		Person olivia = new Person("Olivia", "flying", true, 16);
+		olivia.printSuperpower();
+		olivia.setSuperpower("invisibility");
+		olivia.printSuperpower();
+	}
+}
