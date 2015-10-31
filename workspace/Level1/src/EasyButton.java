@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.MalformedURLException;
@@ -5,12 +7,15 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class EasyButton implements MouseListener {
+public class EasyButton implements MouseListener, ActionListener {
 	public static void main(String[] args) {
 		new EasyButton();
+		
 	}
 
 	/*
@@ -20,12 +25,17 @@ public class EasyButton implements MouseListener {
 	public EasyButton(){
 		
 		showEasyButton();
-		easyButtonImage.addMouseListener(this);
+		//easyButtonImage.addMouseListener(this);
+		button.addActionListener(this);
+		button2.addActionListener(this);
 	}
 
 	JLabel easyButtonImage;
-
+	JPanel panel = new JPanel();
+	JButton button = new JButton();
+	JButton button2 = new JButton();
 	private void showEasyButton() {
+		
 		JFrame quizWindow = new JFrame();
 		quizWindow.setVisible(true);
 		URL url = null;
@@ -38,6 +48,11 @@ public class EasyButton implements MouseListener {
 		Icon icon = new ImageIcon(url);
 		this.easyButtonImage = new JLabel(icon);
 		quizWindow.add(easyButtonImage);
+		quizWindow.add(panel);
+		panel.add(button);
+		panel.add(button2);
+		button2.setText("button 2");
+		button.setText("button 1");
 		quizWindow.pack();
 	}
 
@@ -75,6 +90,21 @@ public class EasyButton implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		JButton button3 = (JButton)arg0.getSource();
+		//System.out.println(arg0.getSource());
+		if(button == button3){
+			System.out.println("button 1");
+		}
+		else if (button2 == button3){
+			System.out.println("button 2");
+		}
+		
 		// TODO Auto-generated method stub
 		
 	}
