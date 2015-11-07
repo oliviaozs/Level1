@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class TypingTutor implements KeyListener {
 	JFrame frame = new JFrame();
 	JLabel label = new JLabel();
-	Date timeAtStart = new Date();
+	Date timeAtStart;
 	char currentLetter;
 	int correctLetters = 0;
 
@@ -46,24 +46,28 @@ public class TypingTutor implements KeyListener {
 		long gameInSeconds = (gameDuration / 1000) % 60;
 		double charactersPerSecond = ((double) numberOfCorrectCharactersTyped / (double) gameInSeconds);
 		int charactersPerMinute = (int) (charactersPerSecond * 60);
+		System.out.println(gameInSeconds);
 		JOptionPane.showMessageDialog(null, "Your typing speed is "
 				+ charactersPerMinute + " characters per minute.");
+		
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println(arg0.getKeyChar());
+		if (timeAtStart == null)
+		{
+			 timeAtStart = new Date();
+			
+		}
 		if (arg0.getKeyChar() == currentLetter) {
-			frame.setBackground(Color.GREEN);
+			frame.getContentPane().setBackground(Color.GREEN);
 			System.out.println("correct");
 			correctLetters ++;
 		} else {
-			frame.setBackground(Color.RED);
+			frame.getContentPane().setBackground(Color.RED);
 			System.out.println("wrong");
-		}
-		if (correctLetters%10 == 0) {
-			showTypingSpeed(correctLetters);
 		}
 		currentLetter = generateRandomLetter();
 		label.setText(currentLetter + "");
@@ -72,7 +76,10 @@ public class TypingTutor implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-
+		if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
+			showTypingSpeed(correctLetters);
+			
+		}
 	}
 
 	@Override
