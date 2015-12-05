@@ -67,7 +67,8 @@ public class WhackAMole implements ActionListener {
 			moles++;
 			frame.dispose();
 			createUI();
-			if (moles == 10) {
+			misses = 0;
+			if (moles == 9) {
 				JOptionPane.showMessageDialog(null, "it took you "+time()+" seconds to hit 10 moles");
 				System.exit(0);
 			}
